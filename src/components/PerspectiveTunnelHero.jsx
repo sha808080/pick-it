@@ -250,13 +250,13 @@ export default function PerspectiveTunnelHero({ onEnterApp }) {
         </p>
       </motion.div>
 
-      {/* Scroll Prompt & Click to Enter */}
+      {/* Scroll Prompt & Tap to Enter */}
       <motion.div
         style={{ opacity: promptOpacity }}
         className="pointer-events-auto absolute bottom-8 z-20 flex flex-col items-center gap-3 text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 cursor-pointer"
         onClick={onEnterApp}
       >
-        <span className="hover:text-white transition-colors">Scroll to Explore &bull; Or Click to Start</span>
+        <span className="hover:text-white transition-colors">Scroll to Explore &bull; Or Tap to Start</span>
         <div className="h-6 w-px bg-gradient-to-b from-indigo-500 to-transparent animate-pulse" />
       </motion.div>
 

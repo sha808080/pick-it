@@ -331,7 +331,7 @@ export default function ChitPicker() {
 
       {/* Minimal Cosmic Footer */}
       <footer className="text-center text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 pt-4">
-        Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-neutral-300 border border-white/10 font-mono text-[10px]">Space</kbd> to pick &bull; Zero Bias
+        Tap or Click to Pick &bull; Zero Bias
       </footer>
     </div>
   )
