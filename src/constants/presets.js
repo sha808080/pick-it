@@ -1,11 +1,7 @@
 export const PRESET_LISTS = [
   {
-    name: 'Where to Eat 🍕',
+    name: 'What to Eat 🍕',
     options: ['Pizza', 'Sushi', 'Burgers', 'Tacos', 'Pasta', 'Salad Bowl']
-  },
-  {
-    name: 'Team Standup 👥',
-    options: ['Alice', 'Bob', 'Charlie', 'Diana', 'Evan']
   },
   {
     name: 'Yes / No / Maybe 🎲',
@@ -20,4 +16,3 @@ export const PRESET_LISTS = [
     options: ['Movie Night', 'Board Games', 'Cook a New Dish', 'Outdoor Walk', 'Read a Book']
   }
 ]
-

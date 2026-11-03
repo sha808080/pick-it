@@ -40,7 +40,7 @@ function App() {
             <div className="fixed top-5 right-5 z-50 flex items-center gap-2.5">
               <button
                 onClick={() => setShowIntro(true)}
-                className="group flex items-center gap-2 px-4 h-10 rounded-full bg-white/5 hover:bg-white/15 active:bg-white/20 backdrop-blur-md border border-white/15 shadow-xl text-neutral-300 hover:text-white transition-all duration-200 text-xs font-mono uppercase tracking-wider active:scale-95"
+                className="group flex items-center gap-2 px-4 h-10 rounded-full bg-white/5 hover:bg-white/15 active:bg-indigo-600/30 active:border-indigo-400 active:ring-2 active:ring-indigo-500/40 backdrop-blur-md border border-white/15 shadow-xl text-neutral-300 hover:text-white transition-all duration-150 text-xs font-mono uppercase tracking-wider focus:outline-none"
                 title="Return to 3D Tunnel Sequence"
                 aria-label="Return to 3D Tunnel Sequence"
               >

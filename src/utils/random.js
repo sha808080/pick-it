@@ -31,6 +31,37 @@ export function cryptoShuffle(array) {
 }
 
 /**
+ * Guaranteed shuffle that ensures cards visibly swap positions.
+ * For length >= 2, guarantees that the new permutation is NOT identical
+ * to the previous one, and maximizes moved cards (aims for derangement).
+ */
+export function guaranteedShuffle(array) {
+  if (!array || array.length <= 1) return [...(array || [])]
+
+  // Try up to 20 times to get a derangement (where EVERY element moves to a new slot)
+  for (let attempt = 0; attempt < 20; attempt++) {
+    const candidate = cryptoShuffle(array)
+    const allMoved = candidate.every((item, idx) => item.id !== array[idx].id)
+    if (allMoved) {
+      return candidate
+    }
+  }
+
+  // Fallback 1: Ensure at least some elements moved if complete derangement didn't hit
+  for (let attempt = 0; attempt < 10; attempt++) {
+    const candidate = cryptoShuffle(array)
+    const isDifferent = candidate.some((item, idx) => item.id !== array[idx].id)
+    if (isDifferent) {
+      return candidate
+    }
+  }
+
+  // Fallback 2: Guaranteed cyclic rotation by at least 1 position
+  const shift = 1 + getSecureRandomInt(array.length - 1)
+  return array.map((_, i) => array[(i + shift) % array.length])
+}
+
+/**
  * Generate a unique ID for each chit
  */
 export function generateId() {
@@ -39,4 +70,3 @@ export function generateId() {
   }
   return 'chit_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 7)
 }
-

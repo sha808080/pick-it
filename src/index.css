@@ -66,7 +66,7 @@ body {
   z-index: 1;
 }
 
-/* Cosmic Ether Glassmorphism (matching PerspectiveTunnelHero) */
+/* Cosmic Glassmorphism */
 .glass-card {
   background: rgba(23, 23, 23, 0.65);
   backdrop-filter: blur(24px);

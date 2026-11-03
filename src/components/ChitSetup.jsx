@@ -19,7 +19,7 @@ export default function ChitSetup({
               key={preset.name}
               type="button"
               onClick={() => onLoadPreset(preset.options)}
-              className="text-xs font-mono tracking-wider px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/15 hover:border-indigo-400/40 text-neutral-300 hover:text-white transition-all shadow-sm active:scale-95"
+              className="text-xs font-mono tracking-wider px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/15 hover:border-indigo-400/40 text-neutral-300 hover:text-white active:bg-indigo-600/30 active:border-indigo-400 active:ring-2 active:ring-indigo-500/40 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
             >
               {preset.name}
             </button>
@@ -56,7 +56,7 @@ export default function ChitSetup({
                   key={num}
                   type="button"
                   onClick={() => onCountChange(num)}
-                  className={`px-2.5 py-1 rounded-lg border transition-all text-xs font-mono ${
+                  className={`px-2.5 py-1 rounded-lg border text-xs font-mono active:bg-indigo-600/40 active:border-indigo-400 active:ring-2 active:ring-indigo-500/40 focus:outline-none ${
                     chitCount === num
                       ? 'bg-indigo-600 text-white border-indigo-500 shadow-md shadow-indigo-600/30 font-semibold'
                       : 'bg-white/5 border-white/10 hover:bg-white/10 text-neutral-400 hover:text-white'
@@ -71,7 +71,7 @@ export default function ChitSetup({
 
         <button
           onClick={onGenerate}
-          className="mt-6 w-full bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-mono uppercase tracking-wider py-3.5 px-6 rounded-2xl transition-all duration-200 shadow-xl shadow-indigo-600/25 ring-1 ring-indigo-400/30 flex items-center justify-center gap-2 text-xs sm:text-sm active:scale-[0.99] font-semibold"
+          className="mt-6 w-full bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:ring-4 active:ring-indigo-500/50 text-white font-mono uppercase tracking-wider py-3.5 px-6 rounded-2xl shadow-xl shadow-indigo-600/25 ring-1 ring-indigo-400/30 flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold focus:outline-none"
         >
           <span>Generate Option Fields</span>
           <svg className="w-4 h-4 text-indigo-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

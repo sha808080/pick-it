@@ -10,12 +10,12 @@ import { useEffect, useRef, useState } from 'react'
 const IMAGES = [
   { src: "https://cdn.21st.dev/assets/mirror/c3/c3fbd2afa140223999a441b32ed986f61d473930002708df805a81532a326aac.jpg", title: "Chroma I" },
   { src: "https://cdn.21st.dev/assets/mirror/9d/9d8b2f675a5814476ada3736ce439bcda23c5c389e0ebf9b25d8a0c09f3bbcfe.jpg", title: "Prism III" },
-  { src: "https://cdn.21st.dev/assets/mirror/8b/8bb738bf2f00d7f7ed3c3ec034adb9938ad38f4be4ac191d632a6a11ad525574.jpg", title: "Ether IV" },
+  { src: "https://cdn.21st.dev/assets/mirror/8b/8bb738bf2f00d7f7ed3c3ec034adb9938ad38f4be4ac191d632a6a11ad525574.jpg", title: "Cosmos IV" },
   { src: "https://cdn.21st.dev/assets/mirror/ac/ac5ac700b188d7ef16ee9dab868098b59f15c440db3f71d4e8c03262a3287577.jpg", title: "Quantum V" },
   { src: "https://cdn.21st.dev/assets/mirror/ef/ef25eff6ce655fba459b3b7e7711524dc92499aa18f6c7dbea9a0fcc56a8f908.jpg", title: "Nebula VI" },
   { src: "https://cdn.21st.dev/assets/mirror/f2/f28b370a5dcbf76240f1504579c4b05fc0ff0bb990a42aff8dc2f73a5dc46072.jpg", title: "Cyber VII" },
   { src: "https://cdn.21st.dev/assets/mirror/f2/f26a1eac85704dda924820392dedfb72d51d8261d35354f83b35d683617295f3.jpg", title: "Flux VIII" },
-  { src: "https://cdn.21st.dev/assets/mirror/77/7755d23eaaa0aa5b403343f44afa7a29b2d06d3065fe54c602b14ba01d00f2aa.jpg", title: "Aether IX" },
+  { src: "https://cdn.21st.dev/assets/mirror/77/7755d23eaaa0aa5b403343f44afa7a29b2d06d3065fe54c602b14ba01d00f2aa.jpg", title: "Vortex IX" },
   { src: "https://cdn.21st.dev/assets/mirror/65/657317761fe9058a1d43711b13c543a71eb5199b7a5d9abf4c28479674e39cf7.jpg", title: "Chroma X" },
 ]
 
@@ -217,7 +217,7 @@ export default function PerspectiveTunnelHero({ onEnterApp }) {
       >
         <button
           onClick={onEnterApp}
-          className="group flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 backdrop-blur-md border border-white/20 text-white text-xs font-mono uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-indigo-500/20 active:scale-95"
+          className="group flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 active:bg-indigo-600/30 active:border-indigo-400 active:ring-2 active:ring-indigo-500/40 backdrop-blur-md border border-white/20 text-white text-xs font-mono uppercase tracking-wider transition-all duration-150 shadow-lg hover:shadow-indigo-500/20 focus:outline-none"
         >
           <span>Enter Pick It</span>
           <svg className="w-4 h-4 transition-transform group-hover:translate-x-1 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

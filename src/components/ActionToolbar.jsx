@@ -15,7 +15,7 @@ export default function ActionToolbar({
           type="button"
           onClick={onAddChit}
           disabled={isAnimating || isShuffling}
-          className="px-4 py-3 rounded-2xl font-mono text-xs uppercase tracking-wider bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white border border-white/10 hover:border-indigo-400/40 transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-1.5 shadow-sm active:scale-95"
+          className="px-4 py-3 rounded-2xl font-mono text-xs uppercase tracking-wider bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white border border-white/10 hover:border-indigo-400/40 transition-all duration-150 disabled:opacity-50 flex items-center justify-center gap-1.5 shadow-sm active:bg-indigo-600/30 active:border-indigo-400 active:ring-2 active:ring-indigo-500/40 focus:outline-none"
           title="Add another option"
         >
           <svg className="w-3.5 h-3.5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -30,7 +30,7 @@ export default function ActionToolbar({
         type="button"
         onClick={onShuffle}
         disabled={isAnimating || isShuffling}
-        className={`flex-1 min-w-[120px] py-3 px-4 rounded-2xl font-mono text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-lg border ${
+        className={`flex-1 min-w-[120px] py-3 px-4 rounded-2xl font-mono text-xs uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-2 shadow-lg border active:bg-indigo-600/30 active:border-indigo-400 active:ring-2 active:ring-indigo-500/40 focus:outline-none ${
           isShuffling
             ? 'bg-amber-500 text-white border-amber-400 animate-pulse'
             : 'bg-neutral-900 hover:bg-neutral-800 text-white border-white/15 hover:border-indigo-400/50 disabled:opacity-50'
@@ -47,7 +47,7 @@ export default function ActionToolbar({
         type="button"
         onClick={onPick}
         disabled={isAnimating || isShuffling}
-        className="flex-1 min-w-[140px] py-3 px-4 rounded-2xl font-mono text-xs sm:text-sm uppercase tracking-wider bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white transition-all duration-200 shadow-xl shadow-indigo-600/30 ring-1 ring-indigo-400/40 disabled:opacity-50 flex items-center justify-center gap-2 active:scale-[0.99] group font-semibold"
+        className="flex-1 min-w-[140px] py-3 px-4 rounded-2xl font-mono text-xs sm:text-sm uppercase tracking-wider bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:ring-4 active:ring-indigo-500/50 text-white transition-all duration-150 shadow-xl shadow-indigo-600/30 ring-1 ring-indigo-400/40 disabled:opacity-50 flex items-center justify-center gap-2 group font-semibold focus:outline-none"
       >
         <svg className="w-4 h-4 transition-transform group-hover:rotate-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
@@ -60,7 +60,7 @@ export default function ActionToolbar({
         type="button"
         onClick={onReset}
         disabled={isAnimating || isShuffling}
-        className="px-4 py-3 rounded-2xl font-mono text-xs uppercase tracking-wider bg-white/5 hover:bg-rose-950/40 hover:border-rose-500/40 text-neutral-400 hover:text-rose-400 border border-white/10 transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-1.5 active:scale-95"
+        className="px-4 py-3 rounded-2xl font-mono text-xs uppercase tracking-wider bg-white/5 hover:bg-rose-950/40 hover:border-rose-500/40 text-neutral-400 hover:text-rose-400 border border-white/10 transition-all duration-150 disabled:opacity-50 flex items-center justify-center gap-1.5 active:bg-rose-950/50 active:border-rose-400 active:ring-2 active:ring-rose-500/30 focus:outline-none"
         title="Reset picked status for a new round"
       >
         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

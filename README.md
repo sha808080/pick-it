@@ -14,7 +14,7 @@ A clean, interactive 3D web app that helps users make unbiased decisions by rand
 - **Synthesized Audio Effects**: Native Web Audio API sounds for flips, cycling, and winner chimes
 - **History Tracking**: Automatically saves recent decision draws in `localStorage`
 - **Cross-Platform**: Optimized for mobile phones, tablets, and desktop (with keyboard shortcuts on desktop)
-- **Responsive & Cosmic Theme**: Unified obsidian ether aesthetic with radial lighting
+- **Responsive & Cosmic Theme**: Unified obsidian dark aesthetic with radial lighting
 
 ## Tech Stack
 

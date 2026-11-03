@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { generateId, cryptoShuffle, getSecureRandomInt } from '../utils/random'
+import { LayoutGroup } from 'framer-motion'
+import { generateId, cryptoShuffle, guaranteedShuffle, getSecureRandomInt } from '../utils/random'
 import { playTick, playFlip, playSuccess } from '../utils/audio'
 import ChitSetup from './ChitSetup'
 import ChitCard from './ChitCard'
@@ -110,21 +111,33 @@ export default function ChitPicker() {
       return
     }
 
-    playFlip()
+    const wasShowing = showChits
+    if (wasShowing) {
+      playFlip()
+      setShowChits(false)
+    } else {
+      playTick()
+    }
 
     setIsShuffling(true)
-    setShowChits(false)
     setPickedChitIds([])
     setCurrentPick(null)
 
-    setTimeout(() => {
-      const shuffledIds = cryptoShuffle(validChits.map(c => c.id))
-      setShuffledChitIds(shuffledIds)
+    // When cards were already face-down, start swap immediately (40ms)
+    // When cards were face-up, give 200ms for card flip to start
+    const swapDelay = wasShowing ? 200 : 40
 
+    setTimeout(() => {
+      const nextChits = guaranteedShuffle(chits)
+      setChits(nextChits)
+      setShuffledChitIds(nextChits.map(c => c.id))
+      playTick()
+
+      // Allow smooth layout glide animation to complete
       setTimeout(() => {
         setIsShuffling(false)
-      }, 500)
-    }, 400)
+      }, 580)
+    }, swapDelay)
   }
 
   const handlePick = useCallback(() => {
@@ -228,7 +241,7 @@ export default function ChitPicker() {
           PICK IT
         </h1>
         <p className="text-neutral-400 text-sm sm:text-base font-light max-w-md mx-auto">
-          Add options, shuffle secretly into the ether, and let fate decide.
+          Add options, shuffle secretly, and let fate decide.
         </p>
       </div>
 
@@ -238,7 +251,7 @@ export default function ChitPicker() {
         {shuffledChitIds.length > 0 && !isShuffling && (
           <div className="mb-5 p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center gap-2.5 text-emerald-400 text-xs font-mono uppercase tracking-wider animate-fade-in">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Chits Shuffled &bull; Hidden in Ether</span>
+            <span>Options Shuffled &bull; Hidden</span>
           </div>
         )}
 
@@ -261,7 +274,7 @@ export default function ChitPicker() {
                   type="button"
                   onClick={handleBackToMenu}
                   disabled={isAnimating || isShuffling}
-                  className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono uppercase tracking-wider bg-white/5 hover:bg-white/15 text-neutral-300 hover:text-white border border-white/10 hover:border-indigo-400/50 transition-all shadow-sm active:scale-95 disabled:opacity-50"
+                  className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono uppercase tracking-wider bg-white/5 hover:bg-white/15 text-neutral-300 hover:text-white border border-white/10 hover:border-indigo-400/50 active:bg-indigo-600/30 active:border-indigo-400 active:ring-2 active:ring-indigo-500/40 disabled:opacity-50 focus:outline-none"
                   title="Back to main menu"
                   aria-label="Back to main menu"
                 >
@@ -274,7 +287,7 @@ export default function ChitPicker() {
                   {isShuffling
                     ? 'Shuffling options...'
                     : !showChits && shuffledChitIds.length > 0
-                      ? 'Chits are hidden'
+                      ? 'Options are hidden'
                       : 'Fill in your options:'}
                 </h2>
               </div>
@@ -283,21 +296,23 @@ export default function ChitPicker() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 max-h-[380px] overflow-y-auto pr-1">
-              {chits.map((chit, index) => (
-                <ChitCard
-                  key={chit.id}
-                  chit={chit}
-                  index={index}
-                  isPicked={pickedChitIds.includes(chit.id) && chit.value.trim() !== ''}
-                  isShuffling={isShuffling}
-                  showChits={showChits}
-                  onUpdate={updateChit}
-                  onRemove={removeChit}
-                  canRemove={chits.length > 2}
-                />
-              ))}
-            </div>
+            <LayoutGroup id="chit-grid">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 max-h-[380px] overflow-y-auto pr-1">
+                {chits.map((chit, index) => (
+                  <ChitCard
+                    key={chit.id}
+                    chit={chit}
+                    index={index}
+                    isPicked={pickedChitIds.includes(chit.id) && chit.value.trim() !== ''}
+                    isShuffling={isShuffling}
+                    showChits={showChits}
+                    onUpdate={updateChit}
+                    onRemove={removeChit}
+                    canRemove={chits.length > 2}
+                  />
+                ))}
+              </div>
+            </LayoutGroup>
           </div>
         )}
 

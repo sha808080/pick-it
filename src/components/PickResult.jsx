@@ -44,7 +44,7 @@ export default function PickResult({
           <button
             type="button"
             onClick={handleCopy}
-            className="p-2.5 rounded-xl text-neutral-400 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all active:scale-95"
+            className="p-2.5 rounded-xl text-neutral-400 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all active:bg-indigo-600/30 active:border-indigo-400 active:ring-2 active:ring-indigo-500/40 focus:outline-none"
             title="Copy choice"
             aria-label="Copy chosen option"
           >

@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 export default function ChitCard({
   chit,
   index,
@@ -9,14 +11,30 @@ export default function ChitCard({
   canRemove
 }) {
   return (
-    <div className={`relative transition-all duration-300 ${isPicked ? 'opacity-35 grayscale-[50%]' : ''}`}>
+    <motion.div
+      layout
+      animate={{
+        scale: isShuffling ? 1.02 : 1,
+        y: isShuffling ? -3 : 0,
+        zIndex: isShuffling ? 20 : 1
+      }}
+      transition={{
+        layout: {
+          duration: 0.55,
+          ease: [0.25, 1, 0.5, 1] // silky smooth glide with zero shaking
+        },
+        scale: { duration: 0.18 },
+        y: { duration: 0.18 }
+      }}
+      className={`relative ${isPicked ? 'opacity-35 grayscale-[50%]' : ''}`}
+    >
       <div className={`flip-card ${!showChits ? 'flipped' : ''}`}>
         <div className="flip-card-inner">
           {/* Front Side: Input Card */}
           <div className="flip-card-front">
             <div className="relative flex items-center group">
               <span className="absolute left-3.5 text-xs font-mono font-bold text-neutral-500 select-none">
-                #{String(index + 1).padStart(2, '0')}
+                {String(index + 1).padStart(2, '0')}
               </span>
               <input
                 type="text"
@@ -24,10 +42,10 @@ export default function ChitCard({
                 onChange={(e) => onUpdate(chit.id, e.target.value)}
                 placeholder={`Option ${index + 1}`}
                 disabled={isPicked || isShuffling}
-                className={`w-full pl-11 ${canRemove ? 'pr-16' : 'pr-10'} py-3.5 rounded-2xl border text-sm font-medium transition-all duration-200 ${
+                className={`w-full pl-11 ${canRemove ? 'pr-16' : 'pr-10'} py-3.5 rounded-2xl border text-sm font-medium ${
                   isPicked
                     ? 'border-white/5 bg-neutral-950/80 text-neutral-500 line-through'
-                    : 'border-white/10 bg-neutral-900/90 text-white placeholder-neutral-600 focus:outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/20 shadow-inner'
+                    : 'border-white/10 bg-neutral-900/90 text-white placeholder-neutral-600 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/40 shadow-inner'
                 }`}
               />
               <div className="absolute right-2.5 flex items-center gap-1">
@@ -42,7 +60,7 @@ export default function ChitCard({
                     type="button"
                     onClick={() => onRemove(chit.id)}
                     disabled={isShuffling}
-                    className="p-1.5 rounded-xl text-neutral-500 hover:text-rose-400 hover:bg-rose-950/40 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 disabled:opacity-0"
+                    className="p-1.5 rounded-xl text-neutral-500 hover:text-rose-400 hover:bg-rose-950/40 opacity-0 group-hover:opacity-100 focus:opacity-100 disabled:opacity-0 focus:outline-none"
                     title="Remove this option"
                     aria-label={`Remove option ${index + 1}`}
                   >
@@ -55,20 +73,28 @@ export default function ChitCard({
             </div>
           </div>
 
-          {/* Back Side: Hidden Ether Card (matching PerspectiveTunnelHero card aesthetic) */}
+          {/* Back Side: Only Centered Lock Icon */}
           <div className="flip-card-back">
-            <div className="w-full h-full min-h-[52px] flex items-center justify-between rounded-2xl bg-gradient-to-r from-neutral-900 via-neutral-900 to-indigo-950/40 border border-white/15 ring-1 ring-white/5 shadow-2xl px-4 text-neutral-300">
-              <div className="flex items-center gap-2.5 text-xs font-mono tracking-wider uppercase text-neutral-300">
-                <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-                <span>Chit #{String(index + 1).padStart(2, '0')} Hidden</span>
-              </div>
-              <svg className="w-4 h-4 text-indigo-400/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <div className={`w-full h-full min-h-[52px] flex items-center justify-center rounded-2xl bg-neutral-900 border transition-all duration-200 ring-1 shadow-2xl px-4 ${
+              isShuffling
+                ? 'border-indigo-400/70 ring-indigo-500/40 shadow-indigo-500/20'
+                : 'border-white/15 ring-white/5'
+            }`}>
+              <svg
+                className={`w-5 h-5 text-indigo-400 transition-transform duration-200 ${
+                  isShuffling ? 'scale-110 text-indigo-300' : ''
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
