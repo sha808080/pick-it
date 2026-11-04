@@ -99,15 +99,10 @@ function TunnelCard({ card, progress, pointer, total, stage }) {
       <div className="group relative h-full w-full overflow-hidden rounded-2xl bg-neutral-200 dark:bg-neutral-900 shadow-2xl shadow-neutral-950/20 dark:shadow-black/90 ring-1 ring-black/10 dark:ring-white/15 transition-all duration-500 hover:ring-indigo-500/70 dark:hover:ring-indigo-400/70 hover:shadow-indigo-500/25">
         <img
           src={card.item.src}
-          alt={card.item.title}
+          alt={card.item.title || "Card"}
           draggable={false}
           className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex items-end p-4 sm:p-5">
-          <span className="text-xs sm:text-sm font-mono tracking-widest uppercase text-white/95 drop-shadow-md">
-            {card.item.title}
-          </span>
-        </div>
       </div>
     </motion.div>
   )
